@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スケジュール — {{PROJECT_NAME}}</title>
+  <style>
+{{CSS}}
+
+/* ガントチャート固有スタイル */
+:root {
+  --gantt-row-height: 36px;
+  --gantt-header-height: 50px;
+  --gantt-label-width: 220px;
+}
+
+.gantt-container {
+  overflow-x: auto;
+  margin: 24px 0;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.gantt {
+  display: grid;
+  min-width: 800px;
+}
+
+.gantt-header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.8em;
+  font-weight: 600;
+  height: var(--gantt-header-height);
+}
+
+.gantt-header .label-cell {
+  width: var(--gantt-label-width);
+  min-width: var(--gantt-label-width);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.gantt-header .time-cells {
+  display: flex;
+  flex: 1;
+}
+
+.gantt-header .time-cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  min-width: 80px;
+}
+
+.gantt-row {
+  display: flex;
+  height: var(--gantt-row-height);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.gantt-row:nth-child(even) {
+  background-color: var(--color-bg-sub);
+}
+
+.gantt-row .label-cell {
+  width: var(--gantt-label-width);
+  min-width: var(--gantt-label-width);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  font-size: 0.85em;
+  border-right: 1px solid var(--color-border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gantt-row .bar-cells {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.gantt-row .bar-cell {
+  flex: 1;
+  position: relative;
+  min-width: 80px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 0.7em;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.gantt-bar.phase-requirements { background-color: #3b82f6; }
+.gantt-bar.phase-design { background-color: #8b5cf6; }
+.gantt-bar.phase-plans { background-color: #f59e0b; }
+.gantt-bar.phase-implementation { background-color: #22c55e; }
+.gantt-bar.phase-test { background-color: #ef4444; }
+.gantt-bar.phase-release { background-color: #64748b; }
+
+.gantt-milestone {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-primary-dark);
+}
+
+/* マイルストーン一覧 */
+.milestones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.milestone-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  border-top: 4px solid var(--color-primary);
+}
+
+.milestone-card .date {
+  font-size: 0.85em;
+  color: var(--color-text-light);
+}
+
+.milestone-card .name {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 4px 0;
+}
+
+.milestone-card .status {
+  font-size: 0.8em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.milestone-card .status.done { background-color: var(--color-success-light); color: var(--color-success); }
+.milestone-card .status.active { background-color: var(--color-primary-lighter); color: var(--color-primary); }
+.milestone-card .status.pending { background-color: var(--color-bg-sub); color: var(--color-text-light); }
+
+/* 凡例 */
+.gantt-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+  font-size: 0.85em;
+}
+
+.gantt-legend .item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gantt-legend .item .color {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+  </style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>スケジュール</h1>
+  <div class="subtitle">{{PROJECT_NAME}}</div>
+  <div class="meta">
+    作成日: {{DATE}}<br>
+    期間: {{PERIOD}}
+  </div>
+</div>
+
+{{CONTENT}}
+
+<div class="doc-footer">
+  {{FOOTER_TEXT}}
+</div>
+
+</body>
+</html>

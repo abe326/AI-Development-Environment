@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{DOCUMENT_TITLE}} — {{PROJECT_NAME}}</title>
+  <style>
+{{CSS}}
+
+/* 見積書固有スタイル */
+.estimate-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 24px 0;
+}
+
+.estimate-summary .card {
+  background-color: var(--color-bg-sub);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.estimate-summary .card .number {
+  font-size: 2.2em;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.estimate-summary .card .label {
+  font-size: 0.9em;
+  color: var(--color-text-light);
+  margin-top: 4px;
+}
+
+.estimate-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.estimate-table th {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.estimate-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.estimate-table tr:nth-child(even) td {
+  background-color: var(--color-bg-sub);
+}
+
+.estimate-table .subtotal td {
+  font-weight: 700;
+  background-color: #eff6ff;
+  border-top: 2px solid var(--color-primary);
+}
+
+.estimate-table .total td {
+  font-weight: 700;
+  font-size: 1.1em;
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.estimate-table td.number {
+  text-align: right;
+  font-family: var(--font-family-code);
+}
+
+.assumptions {
+  background-color: var(--color-bg-sub);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+}
+
+.assumptions h3 {
+  margin-top: 0;
+  border-left: 4px solid var(--color-accent);
+  padding-left: 12px;
+}
+
+.risk-items {
+  margin: 16px 0;
+}
+
+.risk-items .item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  border-left: 4px solid var(--color-border);
+  margin-bottom: 8px;
+}
+
+.risk-items .item.high { border-left-color: var(--color-danger); }
+.risk-items .item.medium { border-left-color: var(--color-warning); }
+.risk-items .item.low { border-left-color: var(--color-success); }
+  </style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>{{DOCUMENT_TITLE}}</h1>
+  <div class="subtitle">{{PROJECT_NAME}}</div>
+  <div class="meta">
+    作成日: {{DATE}}<br>
+    バージョン: {{VERSION}}<br>
+    見積もり精度: {{ACCURACY}}
+  </div>
+</div>
+
+{{CONTENT}}
+
+<div class="doc-footer">
+  {{FOOTER_TEXT}}
+</div>
+
+</body>
+</html>

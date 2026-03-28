@@ -1,0 +1,28 @@
+# aide-pm-export 文書メタデータ
+# プロジェクト毎にカスタマイズしてください
+
+# プロジェクト情報
+project:
+  name: "[プロジェクト名]"
+  company: "[会社名]"
+  department: "[部署名]"
+
+# 文書共通情報
+document:
+  author: "[作成者名]"
+  classification: "社外秘"  # 社外秘 / 公開 / 極秘
+  version: "1.0"
+
+# Marpスライド設定
+marp:
+  theme: "aide-corporate"  # .aide-export/marp-theme.css を参照
+  paginate: true
+
+# Word出力設定（Phase 2以降）
+# docx:
+#   reference: "reference.docx"
+#   lua_filter: "filters/aide-docx.lua"
+
+# Excel出力設定（Phase 2以降）
+# xlsx:
+#   estimate_template: "estimate-template.xlsx"

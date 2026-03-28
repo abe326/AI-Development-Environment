@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PROJECT_NAME}} — {{DOCUMENT_TITLE}}</title>
+  <style>
+{{CSS}}
+  /* ============================================
+     図のズーム機能
+     ============================================ */
+
+  .figure-container {
+    text-align: center;
+    margin: 24px 0;
+  }
+
+  .figure-container svg {
+    max-width: 100%;
+    height: auto;
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+
+  .figure-container svg:hover {
+    opacity: 0.85;
+  }
+
+  .figure-caption {
+    font-size: 0.9em;
+    color: var(--color-text-light);
+    margin-top: 8px;
+  }
+
+  /* モーダル（ズーム表示） */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: auto;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .modal-content svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .modal-close {
+    position: fixed;
+    top: 16px;
+    right: 24px;
+    color: #ffffff;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 1001;
+    line-height: 1;
+  }
+
+  .modal-close:hover {
+    color: var(--color-accent);
+  }
+  </style>
+</head>
+<body>
+
+  <!-- 表紙 -->
+  <div class="cover">
+    <div class="subtitle">{{PROJECT_NAME}}</div>
+    <h1>{{DOCUMENT_TITLE}}</h1>
+    <div class="meta">
+      <div>作成日: {{DATE}}</div>
+      <div>バージョン: {{VERSION}}</div>
+      <div>ステータス: {{STATUS}}</div>
+    </div>
+  </div>
+
+  <!-- 目次 -->
+  <nav class="toc">
+    <h2>目次</h2>
+{{TOC}}
+  </nav>
+
+  <!-- 本文 -->
+  <main class="content">
+{{CONTENT}}
+  </main>
+
+  <!-- 図のモーダル（ズーム表示） -->
+{{FIGURES}}
+
+  <!-- フッター -->
+  <footer class="doc-footer">
+    {{FOOTER_TEXT}}
+  </footer>
+
+  <!-- ズーム機能 JavaScript -->
+  <script>
+  (function() {
+    // 本文中のSVGクリックでモーダルを開く
+    document.querySelectorAll('.figure-container svg').forEach(function(svg) {
+      svg.addEventListener('click', function() {
+        var modalId = this.closest('.figure-container').dataset.modal;
+        if (modalId) {
+          var modal = document.getElementById(modalId);
+          if (modal) {
+            modal.classList.add('active');
+          }
+        }
+      });
+    });
+
+    // オーバーレイクリックでモーダルを閉じる
+    document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === this || e.target.classList.contains('modal-close')) {
+          this.classList.remove('active');
+        }
+      });
+    });
+
+    // Escキーでモーダルを閉じる
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+        });
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>

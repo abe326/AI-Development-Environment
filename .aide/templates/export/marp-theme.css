@@ -1,0 +1,915 @@
+/* @theme aide-corporate */
+
+@import 'default';
+
+:root {
+  /* === プロジェクト毎にカスタマイズする変数 === */
+  --color-primary: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-accent: #f59e0b;
+  --color-text: #1e293b;
+  --color-text-light: #64748b;
+  --color-bg: #ffffff;
+  --color-bg-sub: #f8fafc;
+  --color-border: #e2e8f0;
+  --font-family-base: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
+  --font-family-code: 'Cascadia Code', 'Source Han Code JP', monospace;
+  /* スライドタイトル領域の高さ */
+  --title-area-height: 80px;
+}
+
+/* ============================================
+   基本スタイル
+   ============================================ */
+
+section {
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  padding: 0 60px 40px 60px;
+  padding-top: var(--title-area-height);
+  line-height: 1.6;
+}
+
+/* ============================================
+   ヘッダー・フッター
+   ============================================ */
+
+header {
+  display: none;
+}
+
+footer {
+  font-size: 12px;
+  color: var(--color-text-light);
+}
+
+/* ============================================
+   スライドタイトル（h2）— 固定位置
+   ============================================ */
+
+section h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--title-area-height);
+  margin: 0;
+  padding: 0 60px;
+  color: var(--color-primary-dark);
+  font-size: 1.5em;
+  font-weight: 700;
+  border-bottom: 3px solid var(--color-primary);
+  background-color: var(--color-bg-sub);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+/* ============================================
+   大見出し（h1）— 表紙用
+   ============================================ */
+
+section h1 {
+  color: var(--color-primary-dark);
+  font-size: 2.0em;
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: 8px;
+}
+
+section h3 {
+  color: var(--color-text);
+  font-size: 1.2em;
+}
+
+/* ============================================
+   表紙スライド（class: lead）
+   ============================================ */
+
+section.lead {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: #ffffff;
+}
+
+section.lead h1 {
+  color: #ffffff;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+  font-size: 2.4em;
+}
+
+section.lead h2 {
+  position: static;
+  height: auto;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: none;
+  background-color: transparent;
+  font-size: 1.2em;
+  font-weight: 400;
+  display: block;
+}
+
+section.lead p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   セクション区切り（class: section）
+   ============================================ */
+
+section.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+  background-color: var(--color-bg-sub);
+}
+
+section.section h2 {
+  position: static;
+  height: auto;
+  padding: 0;
+  color: var(--color-primary);
+  font-size: 2.0em;
+  border-bottom: none;
+  background-color: transparent;
+  display: block;
+}
+
+/* ============================================
+   リスト
+   ============================================ */
+
+section ul,
+section ol {
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+section li {
+  margin-bottom: 4px;
+}
+
+section ul ul,
+section ol ol,
+section ul ol,
+section ol ul {
+  font-size: 0.9em;
+  color: var(--color-text-light);
+}
+
+/* ============================================
+   表
+   ============================================ */
+
+section table {
+  font-size: 0.85em;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+section table th {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+section table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+section table tr:nth-child(even) td {
+  background-color: var(--color-bg-sub);
+}
+
+/* ============================================
+   コードブロック
+   ============================================ */
+
+section code {
+  font-family: var(--font-family-code);
+  background-color: var(--color-bg-sub);
+  color: var(--color-primary-dark);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+section pre {
+  background-color: #1e293b;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+section pre code {
+  background-color: transparent;
+  color: #e2e8f0;
+  font-size: 0.8em;
+}
+
+/* ============================================
+   引用（ポイント強調に使用）
+   ============================================ */
+
+section blockquote {
+  border-left: 4px solid var(--color-accent);
+  background-color: #fffbeb;
+  padding: 12px 20px;
+  margin: 16px 0;
+  font-size: 0.95em;
+}
+
+section blockquote p {
+  margin: 0;
+}
+
+/* ============================================
+   画像
+   ============================================ */
+
+section img {
+  max-width: 100%;
+  max-height: 70%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+section.center img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ============================================
+   まとめスライド（class: summary）
+   ============================================ */
+
+section.summary {
+  background-color: var(--color-bg-sub);
+}
+
+section.summary h2 {
+  background-color: var(--color-bg-sub);
+}
+
+section.summary ul {
+  font-size: 1.05em;
+  line-height: 2.0;
+}
+
+/* ============================================
+   追加カラー変数
+   ============================================ */
+
+:root {
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+  --color-success-light: #f0fdf4;
+  --color-danger-light: #fef2f2;
+  --color-primary-lighter: #eff6ff;
+  --color-accent-light: #fffbeb;
+}
+
+/* ============================================
+   説明系: columns — 2カラムレイアウト
+   ============================================ */
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* ============================================
+   説明系: columns-3 — 3カラムレイアウト
+   ============================================ */
+
+.columns-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* ============================================
+   説明系: columns-7-3 — 7:3比率の2カラム
+   ============================================ */
+
+.columns-7-3 {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* ============================================
+   比較系: compare — A vs B 比較
+   ============================================ */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.compare > div:first-child {
+  background-color: var(--color-primary-lighter);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.compare > div:last-child {
+  background-color: var(--color-accent-light);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+/* ============================================
+   比較系: before-after — Before / After
+   ============================================ */
+
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+.before-after > div:first-child {
+  background-color: var(--color-bg-sub);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.before-after > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: var(--color-primary);
+  font-weight: bold;
+  min-width: 3rem;
+}
+
+.before-after > div:last-child {
+  background-color: var(--color-primary-lighter);
+  border: 2px solid var(--color-primary-light);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+/* ============================================
+   比較系: pros-cons — メリット / デメリット
+   ============================================ */
+
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.pros-cons > div:first-child {
+  background-color: var(--color-success-light);
+  border-left: 4px solid var(--color-success);
+  border-radius: 0 8px 8px 0;
+  padding: 1.2rem;
+}
+
+.pros-cons > div:last-child {
+  background-color: var(--color-danger-light);
+  border-left: 4px solid var(--color-danger);
+  border-radius: 0 8px 8px 0;
+  padding: 1.2rem;
+}
+
+/* ============================================
+   比較系: decision — 選定結果
+   ============================================ */
+
+.decision {
+  width: 100%;
+}
+
+.decision .recommended {
+  border: 3px solid var(--color-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+  margin-top: 1.5rem;
+  background-color: var(--color-primary-lighter);
+}
+
+.decision .recommended::before {
+  content: '★ 推奨';
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.8em;
+  font-weight: 700;
+  padding: 2px 12px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   フロー系: flow — 横フロー
+   ============================================ */
+
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+}
+
+.flow > div {
+  flex: 1;
+  background-color: var(--color-bg-sub);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.flow > div + div {
+  margin-left: 2.5rem;
+}
+
+.flow > div + div::before {
+  content: '→';
+  position: absolute;
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* ============================================
+   フロー系: steps — 縦ステップ
+   ============================================ */
+
+.steps {
+  width: 100%;
+  counter-reset: step-counter;
+}
+
+.steps > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  background-color: var(--color-bg-sub);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primary);
+  counter-increment: step-counter;
+}
+
+.steps > div::before {
+  content: counter(step-counter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9em;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   フロー系: timeline — タイムライン
+   ============================================ */
+
+.timeline {
+  width: 100%;
+  position: relative;
+  margin-left: 60px;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-primary-light);
+}
+
+.timeline > div {
+  position: relative;
+  margin-bottom: 1.2rem;
+  padding: 0.8rem 1.2rem;
+  background-color: var(--color-bg-sub);
+  border-radius: 8px;
+}
+
+.timeline > div::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-primary-lighter);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* ============================================
+   数値系: kpi — KPI/大数字表示
+   ============================================ */
+
+section.kpi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+section.kpi .number,
+.kpi .number {
+  font-size: 4em;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin: 0.2em 0;
+}
+
+section.kpi .label,
+.kpi .label {
+  font-size: 1.1em;
+  color: var(--color-text-light);
+}
+
+/* ============================================
+   数値系: dashboard — ダッシュボード 2x2
+   ============================================ */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.dashboard > div {
+  background-color: var(--color-bg-sub);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard > div .number {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.dashboard > div .label {
+  font-size: 0.9em;
+  color: var(--color-text-light);
+  margin-top: 0.3em;
+}
+
+/* ============================================
+   図解系: matrix — 2x2マトリクス（4象限）
+   ============================================ */
+
+.matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  width: 100%;
+}
+
+.matrix > div:nth-child(1) {
+  background-color: var(--color-primary-lighter);
+  border-radius: 12px 4px 4px 4px;
+  padding: 1.2rem;
+}
+
+.matrix > div:nth-child(2) {
+  background-color: var(--color-accent-light);
+  border-radius: 4px 12px 4px 4px;
+  padding: 1.2rem;
+}
+
+.matrix > div:nth-child(3) {
+  background-color: var(--color-success-light);
+  border-radius: 4px 4px 4px 12px;
+  padding: 1.2rem;
+}
+
+.matrix > div:nth-child(4) {
+  background-color: var(--color-danger-light);
+  border-radius: 4px 4px 12px 4px;
+  padding: 1.2rem;
+}
+
+/* ============================================
+   図解系: pyramid — ピラミッド
+   ============================================ */
+
+.pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  counter-reset: pyramid-level;
+}
+
+.pyramid > div {
+  text-align: center;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 4px;
+  counter-increment: pyramid-level;
+}
+
+.pyramid > div:nth-child(1) {
+  width: 30%;
+  background-color: var(--color-primary-dark);
+}
+
+.pyramid > div:nth-child(2) {
+  width: 50%;
+  background-color: var(--color-primary);
+}
+
+.pyramid > div:nth-child(3) {
+  width: 70%;
+  background-color: var(--color-primary-light);
+}
+
+.pyramid > div:nth-child(4) {
+  width: 90%;
+  background-color: #93bbfd;
+  color: var(--color-text);
+}
+
+.pyramid > div:nth-child(5) {
+  width: 100%;
+  background-color: var(--color-primary-lighter);
+  color: var(--color-text);
+}
+
+/* ============================================
+   図解系: relation — 関係図
+   ============================================ */
+
+.relation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.relation > div:first-child {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1em;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.relation > div:not(:first-child) {
+  background-color: var(--color-bg-sub);
+  border: 2px solid var(--color-primary-light);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  min-width: 120px;
+}
+
+/* ============================================
+   課題系: issue — 課題提起
+   ============================================ */
+
+section.issue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+section.issue h2 {
+  background-color: var(--color-bg-sub);
+}
+
+section.issue p {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  max-width: 80%;
+  line-height: 1.6;
+}
+
+/* ============================================
+   課題系: risk — リスク一覧
+   ============================================ */
+
+section.risk table td:last-child,
+.risk table td:last-child {
+  text-align: center;
+  font-weight: 600;
+}
+
+.risk .high,
+section.risk .high {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.risk .medium,
+section.risk .medium {
+  background-color: #fffbeb;
+  color: #d97706;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.risk .low,
+section.risk .low {
+  background-color: var(--color-success-light);
+  color: #16a34a;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* ============================================
+   結論系: recommendation — 推奨・CTA
+   ============================================ */
+
+section.recommendation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.recommendation p {
+  font-size: 1.2em;
+}
+
+section.recommendation .action,
+.recommendation .action {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1em;
+  padding: 0.8rem 2.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ============================================
+   結論系: cta — 次のアクション
+   ============================================ */
+
+section.cta {
+  border-left: 6px solid var(--color-accent);
+}
+
+section.cta ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+section.cta ul li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.05em;
+}
+
+section.cta ul li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-size: 1.2em;
+}
+
+/* ============================================
+   その他: screenshot — スクリーンショット
+   ============================================ */
+
+.screenshot img,
+section.screenshot img {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+.screenshot .caption,
+section.screenshot .caption {
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--color-text-light);
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   その他: faq — FAQ / Q&A
+   ============================================ */
+
+.faq dl,
+section.faq dl {
+  width: 100%;
+}
+
+.faq dt,
+section.faq dt {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 1.05em;
+  margin-top: 1rem;
+}
+
+.faq dt::before,
+section.faq dt::before {
+  content: 'Q. ';
+  font-weight: 800;
+}
+
+.faq dd,
+section.faq dd {
+  margin-left: 1.5rem;
+  margin-top: 0.3rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.faq dd::before,
+section.faq dd::before {
+  content: 'A. ';
+  font-weight: 700;
+  color: var(--color-text-light);
+}

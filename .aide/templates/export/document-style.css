@@ -1,0 +1,243 @@
+/* aide ドキュメントエクスポート用スタイル */
+
+:root {
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-text: #1e293b;
+  --color-text-light: #64748b;
+  --color-bg: #ffffff;
+  --color-bg-sub: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-accent: #f59e0b;
+  --font-family-base: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
+  --font-family-code: 'Cascadia Code', 'Source Han Code JP', monospace;
+}
+
+@page {
+  size: A4;
+  margin: 25mm 20mm 25mm 20mm;
+}
+
+@media print {
+  body { font-size: 10pt; }
+  .page-break { page-break-before: always; }
+  .no-print { display: none; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.8;
+  max-width: none;
+  margin: 0;
+  padding: 40px 40px;
+}
+
+/* ============================================
+   表紙
+   ============================================ */
+
+.cover {
+  text-align: center;
+  padding: 80px 0 60px 0;
+  border-bottom: 3px solid var(--color-primary);
+  margin-bottom: 40px;
+}
+
+.cover h1 {
+  color: var(--color-primary-dark);
+  font-size: 2em;
+  margin-bottom: 8px;
+  border: none;
+}
+
+.cover .subtitle {
+  font-size: 1.2em;
+  color: var(--color-text-light);
+  margin-bottom: 40px;
+}
+
+.cover .meta {
+  font-size: 0.95em;
+  color: var(--color-text-light);
+  line-height: 2;
+}
+
+/* ============================================
+   目次
+   ============================================ */
+
+.toc {
+  margin: 30px 0 40px 0;
+  padding: 20px 30px;
+  background-color: var(--color-bg-sub);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.toc h2 {
+  color: var(--color-primary-dark);
+  font-size: 1.3em;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 6px;
+  margin-top: 0;
+}
+
+.toc ol {
+  padding-left: 1.5em;
+  line-height: 2.2;
+}
+
+.toc a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   見出し
+   ============================================ */
+
+h1 {
+  color: var(--color-primary-dark);
+  font-size: 1.8em;
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: 8px;
+  margin-top: 50px;
+}
+
+h2 {
+  color: var(--color-primary);
+  font-size: 1.4em;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 6px;
+  margin-top: 40px;
+}
+
+h3 {
+  color: var(--color-text);
+  font-size: 1.15em;
+  margin-top: 30px;
+  padding-left: 12px;
+  border-left: 4px solid var(--color-primary);
+}
+
+h4 {
+  color: var(--color-text);
+  font-size: 1.05em;
+  margin-top: 20px;
+}
+
+/* ============================================
+   表
+   ============================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9em;
+}
+
+thead th {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+tbody tr:nth-child(even) td {
+  background-color: var(--color-bg-sub);
+}
+
+/* ============================================
+   コードブロック
+   ============================================ */
+
+code {
+  font-family: var(--font-family-code);
+  background-color: var(--color-bg-sub);
+  color: var(--color-primary-dark);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: #1e293b;
+  border-radius: 8px;
+  padding: 16px 20px;
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  color: #e2e8f0;
+  padding: 0;
+}
+
+/* ============================================
+   引用・注記
+   ============================================ */
+
+blockquote {
+  border-left: 4px solid var(--color-accent);
+  background-color: #fffbeb;
+  padding: 12px 20px;
+  margin: 16px 0;
+  font-size: 0.95em;
+}
+
+blockquote p {
+  margin: 4px 0;
+}
+
+/* ============================================
+   リスト
+   ============================================ */
+
+ul, ol {
+  padding-left: 1.5em;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+/* ============================================
+   区切り線（章の区切り）
+   ============================================ */
+
+hr {
+  border: none;
+  border-top: 2px solid var(--color-border);
+  margin: 50px 0;
+}
+
+/* ============================================
+   フッター（文書情報）
+   ============================================ */
+
+.doc-footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 2px solid var(--color-border);
+  font-size: 0.85em;
+  color: var(--color-text-light);
+  text-align: center;
+}
