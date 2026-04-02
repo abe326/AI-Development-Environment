@@ -32,8 +32,8 @@
 | **要件定義** | 打合せ→議事録、要件をブレスト、図で整理 | `meeting` → `brainstorm` → `diagram` |
 | **設計** | アーキテクチャ検討、設計書作成 | `brainstorm` → `diagram` → `analyze` |
 | **計画** | 製造計画書・スケジュール・見積もり | `plan` → `estimate` |
-| **実装** | 仕様に基づくコード作成、レビュー | `dev-code` → `dev-review` |
-| **テスト** | テスト仕様書→実行→証跡→品質レポート | `dev-testspec` → `dev-test` → `dev-quality` |
+| **実装** | 仕様に基づくコード作成、レビュー | `dev-code` → `review-code` |
+| **テスト** | テスト仕様書→実行→証跡→品質レポート | `dev-testspec` → `dev-test` → `review-code --scope coverage` |
 | **リリース** | 成果物エクスポート、報告資料 | `export` → `slide` |
 
 #### 要件定義フェーズの典型フロー
@@ -59,13 +59,15 @@
 
 ```bash
 /aide-dev-code            # 製造計画書に基づきコード作成（確認→実装）
-/aide-dev-review          # コードレビュー（仕様準拠チェック）
+                          # → 完了後 /aide-review-code を案内
+/aide-review-code         # コードレビュー（仕様準拠・品質・セキュリティ）
 
 /aide-dev-testspec        # 単体/結合テスト仕様書を作成
 /aide-dev-code            # テストコードを実装
 /aide-dev-test            # テスト実行 → 証跡収集 → レポート生成
-/aide-dev-quality         # カバレッジ・静的解析・セキュリティレポート
+                          # → 完了後 /aide-review-code --scope coverage を案内
 
+/aide-review-doc          # フェーズ完了時のドキュメント監査
 /aide-pm-export           # テスト成果物をHTML/PDFに変換
 ```
 
@@ -76,12 +78,12 @@
 問い合わせ・課題をタスクID（`T-XXX`）で並行管理する。
 
 ```bash
+# セッション開始時にタスク一覧・滞留警告・サマリが自動表示される
+
 /aide-ops-new             # 問い合わせ受付 → タスク起票
-/aide-ops-list            # OPENタスクの一覧確認（毎朝）
 /aide-ops-investigate T-001  # 指定タスクの調査・原因分析
 /aide-ops-fix T-001       # 修正対応
 /aide-ops-close T-001     # 対応記録 + クローズ
-/aide-ops-status          # 全タスクの状況サマリ（週次）
 ```
 
 #### タスク対応のライフサイクル
@@ -123,11 +125,10 @@ docs-ドキュメント/tasks-タスク/
 |---|---|---|
 | `/aide-pm-analyze` | 対話で理解を深める（ファイル更新なし） | 要件・設計の不明点を確認したい時 |
 | `/aide-pm-diagram` | draw.io互換のSVG図を生成 | 図で説明・確認したい時 |
-| `/aide-pm-issues` | 課題ステータスの棚卸し | 進捗確認・定例会前 |
-| `/aide-pm-docaudit` | 成果物の整合性・網羅性チェック | フェーズ完了時・提出前 |
+| `/aide-review-doc` | ドキュメントの整合性・網羅性チェック | フェーズ完了時・提出前 |
+| `/aide-review-code` | コードレビュー（`--scope` で観点絞り込み可） | PR作成前・実装後 |
 | `/aide-pm-retro` | 振り返り（KPT） | フェーズ完了時・問題発生後 |
 | `/aide-dev-migrate` | 依存更新 + CVE脆弱性チェック | スプリント開始時・リリース前 |
-| `/aide-dev-review` | コードレビュー | PR作成前 |
 
 ---
 
@@ -145,9 +146,14 @@ docs-ドキュメント/tasks-タスク/
 | `estimate` | 見積もり作成 |
 | `slide` | 資料作成（4種類自動判定） |
 | `export` | 成果物をHTML/PDF/docxに変換 |
-| `issues` | 課題ステータス確認 |
-| `docaudit` | ドキュメント監査 |
 | `retro` | 振り返り（KPT） |
+
+### レビュー系（aide-review-*）
+
+| コマンド | 一言説明 |
+|---|---|
+| `review-code` | コードレビュー（仕様準拠・品質・セキュリティ・カバレッジ・静的解析） |
+| `review-doc` | ドキュメント監査（整合性・網羅性・トレーサビリティ） |
 
 ### 開発系（aide-dev-*）
 
@@ -156,8 +162,6 @@ docs-ドキュメント/tasks-タスク/
 | `code` | 仕様に基づくコード作成 |
 | `testspec` | 単体/結合テスト仕様書作成 |
 | `test` | テスト実行 + 証跡収集 + レポート |
-| `quality` | カバレッジ・静的解析・セキュリティ |
-| `review` | コードレビュー |
 | `migrate` | 依存更新 + CVEチェック |
 
 ### 運用保守系（aide-ops-*）
@@ -165,11 +169,16 @@ docs-ドキュメント/tasks-タスク/
 | コマンド | 一言説明 |
 |---|---|
 | `new` | 問い合わせ受付 + タスク起票 |
-| `list` | OPENタスクの一覧 |
 | `investigate` | タスクの調査 |
 | `fix` | タスクの修正 |
 | `close` | 対応記録 + クローズ |
-| `status` | 全タスクサマリ |
+
+### 自動実行（セッション開始時）
+
+| 機能 | 対象 | 内容 |
+|---|---|---|
+| タスク状況表示 | ops プロジェクト | タスク一覧 + 滞留警告 + サマリ + アクション提案 |
+| 課題状況表示 | dev プロジェクト | 課題サマリ + 停滞警告 + アクション提案 |
 
 ---
 
@@ -233,6 +242,19 @@ aide自体の動作に必要なツールは **Git のみ**。
 | **draw.io CLI** | .drawio.svg → PNG/PDF | 任意（図の単体変換時） | [draw.io Desktop](https://github.com/jgraph/drawio-desktop) |
 | **Playwright** | HTML → PDF / スクリーンショット証跡 | 任意（ブラウザ印刷で代替可） | `npm install -g playwright` |
 
+### インポート時に必要なツール（Officeファイル読み込み）
+
+Office形式（.docx / .pptx / .xlsx）をMarkdownに変換して読み込む場合に必要。`/aide-init` 実行時に導入状況を確認し、未導入のものは自動インストールを案内する。
+
+| ツール | 用途 | 必須/任意 | インストール |
+|---|---|---|---|
+| **pandoc** | Word(.docx) → MD変換（高精度） | 推奨 | `apt install pandoc` / `brew install pandoc` |
+| **python-pptx** | PowerPoint(.pptx) → MD変換 | 必須（pptx読み込み時） | `pip install python-pptx` |
+| **openpyxl** | Excel(.xlsx) → MD変換 | 必須（xlsx読み込み時） | `pip install openpyxl` |
+| **python-docx** | Word(.docx) → MD変換（pandoc未導入時のfallback） | 任意 | `pip install python-docx` |
+
+変換スクリプトは `.aide/templates/export/scripts/` に配置。詳細は `.aide/rules.md` の「Office ファイル読み込みルール」を参照。
+
 ### プロジェクト依存のツール（aide側の要件ではない）
 
 以下は対象プロジェクトの技術スタックに応じて必要になるもの。aideフレームワークの要件ではなく、プロジェクト側の依存。
@@ -240,6 +262,6 @@ aide自体の動作に必要なツールは **Git のみ**。
 | カテゴリ | 例 | 備考 |
 |---|---|---|
 | テストフレームワーク | Jest, pytest, Go test 等 | `aide-dev-test` が検出して利用する |
-| 静的解析 | ESLint, Pylint 等 | `aide-dev-quality` が検出して利用。未導入時はAI解析で代替 |
+| 静的解析 | ESLint, Pylint 等 | `aide-review-code` が検出して利用。未導入時はAI解析で代替 |
 | 脆弱性スキャン | npm audit, pip-audit, trivy 等 | `aide-dev-migrate` が検出して利用。未導入時はAI解析で代替 |
 | ランタイム | Node.js, Python, Go 等 | プロジェクトの技術スタックに依存 |

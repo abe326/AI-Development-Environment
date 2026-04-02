@@ -237,7 +237,7 @@ function [関数名](param: Type): ReturnType
 - docs/03_plans/artifacts-成果物/製造計画書-{機能名}.md に機能別計画を出力
 
 > **注意**: スケジュール（schedule.md）やタスク管理（issues.md）への出力はaide-pm-planの範囲外。
-> これらは `docs/00_pm-管理/` で別途管理する（`/aide-pm-estimate` や `/aide-pm-issues` 等を使用）。
+> これらは `docs/00_pm-管理/` で別途管理する（`/aide-pm-estimate` 等を使用。課題状況はセッション開始時に自動表示される）。
 
 ### 5. ユーザーにレビュー依頼
 

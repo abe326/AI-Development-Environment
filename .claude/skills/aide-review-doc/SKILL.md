@@ -1,9 +1,9 @@
 ---
-name: aide-pm-docaudit
+name: aide-review-doc
 description: 成果物の整合性・網羅性・トレーサビリティを横断的に監査する。フェーズ完了時や提出前のセルフチェックに使用
 ---
 
-# aide-pm-docaudit: ドキュメント監査
+# aide-review-doc: ドキュメントレビュー
 
 各フェーズの成果物を横断的に監査し、整合性・網羅性・トレーサビリティの問題を検出する。
 
