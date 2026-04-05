@@ -19,6 +19,12 @@
 - 技術スタック: [言語、フレームワーク、インフラ]
 - 担当: [担当者]
 
+## プロジェクト規模
+
+<!-- aide-init時に設定。この値に応じてスキルの振る舞いが変わる -->
+<!-- quick: 簡略フロー / standard: 通常フロー / enterprise: 監査付きフロー -->
+standard
+
 ## 現在のフェーズ
 
 [Phase 0: 企画 / Phase 1: 要件定義 / Phase 2: 設計 / Phase 3: 計画 / Phase 4: 実装 / Phase 5: テスト・QA / Phase 6: リリース]
@@ -124,3 +130,11 @@ tests/
 ## プロジェクト固有のルール
 
 [プロジェクト固有のコーディング規約、制約事項、非機能要件等を追記]
+
+## 監査対応
+
+<!-- enterpriseモードの場合にaide-initが以下を設定する -->
+<!-- - コンプライアンス台帳: docs/05_audit-監査/compliance-台帳/compliance-register.md -->
+<!-- - トレーサビリティ: docs/05_audit-監査/traceability-トレーサビリティ/traceability-matrix.md -->
+<!-- - 品質メトリクス: docs/05_audit-監査/quality-metrics-品質メトリクス/metrics-history.md -->
+<!-- - 監査証跡: docs/05_audit-監査/audit-trail-監査証跡/ -->

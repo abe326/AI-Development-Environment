@@ -1,0 +1,8 @@
+---
+description: "振り返り（KPT）を実施・記録する。フェーズ完了時やプロジェクト完了時に使う"
+agent: agent
+---
+
+以下のスキル定義に従って実行してください：
+
+[aide-pm-retro スキル定義](../.aide/skills/aide-pm-retro/SKILL.md)

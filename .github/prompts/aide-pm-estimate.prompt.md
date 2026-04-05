@@ -1,0 +1,8 @@
+---
+description: "要件書・設計書・製造計画書から作業見積もりを作成する。見積もり依頼時や計画策定時に使う。通常見積もりと概算見積もりの2パターン対応"
+agent: agent
+---
+
+以下のスキル定義に従って実行してください：
+
+[aide-pm-estimate スキル定義](../.aide/skills/aide-pm-estimate/SKILL.md)
