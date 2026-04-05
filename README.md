@@ -1,5 +1,7 @@
 # aide — AI Development Environment
 
+日本語 | **[English](README.en.md)**
+
 > **仕様を共通言語として、AIと人間がフェーズを踏んで合意形成しながら進める開発フレームワーク**
 
 仕様駆動開発（SDD）ベースのAI伴走ツール。
@@ -247,4 +249,4 @@ docs-ドキュメント/
 
 ## ライセンス
 
-MIT
+[MIT](LICENSE)
