@@ -1,6 +1,6 @@
 ---
 name: aide-pm-export
-description: 成果物をHTML中間形式経由で提出用形式に変換する。成果物の提出・納品時に使う
+description: 既存の成果物（要件書・設計書・製造計画書など）をHTML・PDF・docx形式に変換し、提出用ドキュメントを生成する。「提出用ファイルを作りたい」「PDFに変換して」「Word形式にしたい」「HTML版を作って」と言われたらこのスキルを使う。新規のスライド・報告書・見積書を作る場合は /aide-pm-slide を使うこと。
 ---
 
 # aide-pm-export: 成果物エクスポート
@@ -192,13 +192,29 @@ docs/00_pm-管理/schedule-スケジュール.md からHTMLガントチャート
 
 ### 8. スライドのエクスポート
 
-Marp形式のスライドmdを変換する。
+Marp 形式のスライド md を変換する。**フロー: Marp md → HTML（レビュー）→ PPTX（配布用）**
 
-1. Marp md を `marp --html --theme-set aide-corporate.css` でHTML変換
-2. .drawio.svg はimgタグで参照（スライドと同じフォルダに配置）
-3. pptxが必要な場合は `marp --pptx` で変換
+1. Marp md を `marp --html --theme-set aide-corporate.css` で HTML 変換
+2. .drawio.svg は img タグで参照（スライドと同じフォルダに配置）
+3. PPTX が必要な場合は以下の経路で変換する:
 
-### 6. 変換コマンド一覧
+**Primary（推奨）: python-pptx 経路** — 編集可能テキスト・aide ブランド反映
+
+```bash
+python3 .aide/templates/export/scripts/md2pptx.py {input}.md -o {output}.pptx
+```
+
+対応レイアウト: lead / section / summary / issue / risk / recommendation / cta / kpi / columns / compare / before-after / flow / テーブル
+
+**Fallback: pandoc 経路** — テキスト中心の簡易デッキ向け
+
+```bash
+pandoc {input}.md -t pptx -o {output}.pptx
+```
+
+> **`marp --pptx` は使用しないこと。** スライドが画像に変換され編集不可になる。
+
+### 9. 変換コマンド一覧
 
 | 変換 | コマンド | 備考 |
 |---|---|---|
@@ -206,11 +222,12 @@ Marp形式のスライドmdを変換する。
 | md → html（スライド） | `marp --html --theme-set aide-corporate.css` | Marp形式のみ |
 | html → pdf | ブラウザ印刷（Ctrl+P） or `playwright` | HTMLから変換 |
 | html → docx | `pandoc {input}.html -o {output}.docx` | HTMLから変換 |
-| md → pptx（スライド） | `marp --pptx --theme-set aide-corporate.css` | Marp直接変換 |
+| md → pptx（スライド）Primary | `python3 .aide/templates/export/scripts/md2pptx.py {input}.md -o {output}.pptx` | 編集可能・ブランド反映 |
+| md → pptx（スライド）Fallback | `pandoc {input}.md -t pptx -o {output}.pptx` | テキスト中心デッキ向け |
 | drawio.svg → png | `drawio -x -f png -o {output}.png {input}.drawio.svg` | 図の単体変換 |
 | drawio.svg → pdf | `drawio -x -f pdf --crop -o {output}.pdf {input}.drawio.svg` | 図の単体変換 |
 
-### 7. 変換結果の報告
+### 10. 変換結果の報告
 
 変換結果を一覧で報告する：
 
@@ -224,7 +241,7 @@ Marp形式のスライドmdを変換する。
 
 ```
 
-### 8. deliverables-成果物一覧.md の状態更新
+### 11. deliverables-成果物一覧.md の状態更新
 
 エクスポート成功した成果物の「状態」列を更新する：
 - 「作成済み」→ 変更なし
@@ -252,13 +269,16 @@ docs/01_requirements/
 
 以下のツールがインストールされている必要がある：
 - **marked**: md → HTML 変換（必須）
-- **pandoc**: HTML → docx 変換（docxが必要な場合）
-- **marp-cli**: Marp形式md → html / pptx 変換（スライドのみ）
+- **marp-cli**: Marp形式md → HTML 変換（スライドのみ）
+- **python-pptx**: Marp md → PPTX 変換・Primary 経路（`pip install -r .aide/templates/export/scripts/requirements-export.txt`）
+- **pandoc**: HTML → docx 変換 / Marp md → PPTX Fallback 経路
 - **drawio CLI**: drawio.svg → png / pdf 変換（図の単体変換）
 - **playwright**（オプション）: HTML → PDF 自動変換
 
 ツールが未インストールの場合、該当する変換をスキップし、インストール手順を案内する。
 PDFはブラウザ印刷（Ctrl+P）でも生成可能なため、playwright は必須ではない。
+
+> **注意:** `marp --pptx` は編集不可の画像埋め込み PPTX を生成するため使用しないこと。
 
 ## 注意事項
 

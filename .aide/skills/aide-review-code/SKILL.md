@@ -1,6 +1,6 @@
 ---
 name: aide-review-code
-description: コードレビューを実施する。実装完了後のレビュー時に使う。仕様準拠・品質・セキュリティ・カバレッジ・静的解析を一括チェック。--scopeで絞り込み可能
+description: コードの仕様準拠・品質・セキュリティ・カバレッジ・静的解析を一括レビューする。--scopeでall/spec/quality/security/coverageの観点を絞り込める。「コードレビューして」「実装を確認して」「セキュリティチェックして」と言われたらこのスキルを使う。ドキュメントの整合性チェックは /aide-review-doc、Enterprise監査は /aide-review-audit を使うこと。
 ---
 
 # aide-review-code: コードレビュー
