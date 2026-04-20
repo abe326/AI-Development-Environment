@@ -1,6 +1,7 @@
 ---
 name: aide-ops-investigate
 description: 指定タスク（T-XXX）の原因調査・影響分析を行い、調査結果を記録する。コードや設定ファイルを変更しない（変更は /aide-ops-fix で行う）。「T-123を調査して」「このバグの原因を分析して」「どこが問題か調べて」と言われたらこのスキルを使う。調査完了後は /aide-ops-fix で修正する。
+short_description: 指定タスクの原因調査・影響分析を行い、調査レポートを作成する
 ---
 
 # aide-ops-investigate: タスクの調査・原因分析

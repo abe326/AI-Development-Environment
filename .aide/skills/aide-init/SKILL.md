@@ -1,6 +1,7 @@
 ---
 name: aide-init
 description: プロジェクトを初期化する。dev（新規開発）/ ops（運用保守）/ dev+ops の3モードに対応。フォルダ構造・CLAUDE.md・GitHub Copilot/Codex向け設定ファイルを一括生成する。「プロジェクトを始める」「新規リポジトリにaideを入れたい」「初期設定をしたい」と言われたら必ずこのスキルを使う。要件定義や設計の前に実行するセットアップスキル。
+short_description: プロジェクトを dev / ops / dev+ops で初期化する。フォルダ構成・CLAUDE.md・必要ツールを一括セットアップ
 ---
 
 # aide-init: プロジェクト初期化

@@ -1,6 +1,6 @@
 ---
 name: aide-pm-diagram
-description: 成果物やブレスト内容からdraw.io互換のSVG図を生成する。図の作成・更新が必要なときに使う
+description: 成果物やブレストから draw.io 互換の .drawio.svg 図を生成する
 ---
 
 以下のスキル定義に従って実行してください。

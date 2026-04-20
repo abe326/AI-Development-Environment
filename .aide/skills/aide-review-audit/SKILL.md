@@ -1,6 +1,7 @@
 ---
 name: aide-review-audit
 description: 監査証跡・品質ゲート・コンプライアンス・トレーサビリティを横断監査する（Enterpriseモード専用）。フェーズ完了時の品質ゲートとして必ず実行する。「監査レポートを作って」「フェーズの品質ゲートを通したい」「コンプライアンスチェックして」と言われたらこのスキルを使う。標準モードのドキュメント監査は /aide-review-doc を使うこと。
+short_description: 監査証跡・品質ゲート・コンプライアンスを横断監査する（Enterprise モード専用）
 ---
 
 # aide-review-audit: 監査レビュー

@@ -1,6 +1,7 @@
 ---
 name: aide-ops-fix
 description: 調査済みタスク（T-XXX）の修正実装を行う。/aide-ops-investigate 完了後に使う。「T-123を修正して」「調査が終わったので直したい」「バグを修正して」と言われたらこのスキルを使う。修正完了後はユーザー確認を経て /aide-ops-close でクローズする。
+short_description: 指定タスクの修正実装を行う。仕様準拠チェックとテスト実行を含む
 ---
 
 # aide-ops-fix: タスクの修正対応

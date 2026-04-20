@@ -1,6 +1,7 @@
 ---
 name: aide-pm-export
 description: 既存の成果物（要件書・設計書・製造計画書など）をHTML・PDF・docx形式に変換し、提出用ドキュメントを生成する。「提出用ファイルを作りたい」「PDFに変換して」「Word形式にしたい」「HTML版を作って」と言われたらこのスキルを使う。新規のスライド・報告書・見積書を作る場合は /aide-pm-slide を使うこと。
+short_description: 成果物（要件書・設計書等）を HTML / PDF / docx に一括変換する
 ---
 
 # aide-pm-export: 成果物エクスポート

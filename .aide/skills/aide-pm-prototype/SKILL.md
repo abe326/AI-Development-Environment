@@ -1,6 +1,7 @@
 ---
 name: aide-pm-prototype
 description: ラフな要件から動くプロトタイプコードをすぐに生成する（Quickモード専用）。仕様書がなくても動くものを作れる。「まず動くものを見たい」「プロトタイプを作りたい」「ラフで良いから動かしたい」と言われたらこのスキルを使う。本実装は /aide-dev-code で、プロトタイプから仕様書を作るには /aide-pm-reverse-spec を使うこと。
+short_description: ラフ要件から動くプロトタイプコードを素早く生成する（Quick モード向け）
 ---
 
 # aide-pm-prototype: プロトタイプ生成

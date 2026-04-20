@@ -1,6 +1,7 @@
 ---
 name: aide-pm-retro
 description: KPT（Keep/Problem/Try）形式の振り返りを実施・記録する。過去のTryの実施状況も自動確認する。スプリント終了・フェーズ完了・プロジェクト終了時に使う。「振り返りをしたい」「レトロをやろう」「KPTを書きたい」と言われたらこのスキルを使う。
+short_description: KPT 形式で振り返りを実施・記録する。過去の Try の実施確認も行う
 ---
 
 # aide-pm-retro: 振り返り（レトロスペクティブ）

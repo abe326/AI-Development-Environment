@@ -1,5 +1,5 @@
 ---
-description: "振り返り（KPT）を実施・記録する。フェーズ完了時やプロジェクト完了時に使う"
+description: "KPT 形式で振り返りを実施・記録する。過去の Try の実施確認も行う"
 agent: agent
 ---
 

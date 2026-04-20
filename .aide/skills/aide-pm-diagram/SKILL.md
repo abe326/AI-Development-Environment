@@ -1,6 +1,7 @@
 ---
 name: aide-pm-diagram
 description: draw.io互換SVGの図を生成する。フローチャート・シーケンス図・ER図・アーキテクチャ図・マインドマップなど各種図に対応。「図を描いて」「フロー図を作りたい」「構成図が欲しい」「ダイアグラムを生成して」と言われたらこのスキルを使う。draw.ioで手動編集できる.drawio.svg形式で出力する。
+short_description: 成果物やブレストから draw.io 互換の .drawio.svg 図を生成する
 ---
 
 # aide-pm-diagram: 図の作成

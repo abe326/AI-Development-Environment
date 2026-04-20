@@ -1,6 +1,6 @@
 ---
 name: aide-pm-export
-description: 成果物をHTML中間形式経由で提出用形式に変換する。成果物の提出・納品時に使う
+description: 成果物（要件書・設計書等）を HTML / PDF / docx に一括変換する
 ---
 
 @../../.aide/skills/aide-pm-export/SKILL.md

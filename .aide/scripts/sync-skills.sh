@@ -35,6 +35,20 @@ extract_field() {
     sed -n '/^---$/,/^---$/p' "$file" | grep "^${field}:" | sed "s/^${field}: *//"
 }
 
+# ラッパー用の description を決定
+# short_description があればそれを、無ければ description を使う
+resolve_wrapper_description() {
+    local file="$1"
+    local short_desc description
+    short_desc=$(extract_field "$file" "short_description")
+    if [ -n "$short_desc" ]; then
+        printf '%s' "$short_desc"
+    else
+        description=$(extract_field "$file" "description")
+        printf '%s' "$description"
+    fi
+}
+
 # スキル一覧を取得
 get_skills() {
     find "$SKILLS_SRC" -mindepth 1 -maxdepth 1 -type d | sort | while read -r dir; do
@@ -53,7 +67,7 @@ generate_claude() {
     while IFS= read -r skill; do
         local name description
         name=$(extract_field "$SKILLS_SRC/$skill/SKILL.md" "name")
-        description=$(extract_field "$SKILLS_SRC/$skill/SKILL.md" "description")
+        description=$(resolve_wrapper_description "$SKILLS_SRC/$skill/SKILL.md")
         [ -z "$name" ] && name="$skill"
         [ -z "$description" ] && description=""
 
@@ -82,7 +96,7 @@ generate_copilot() {
     while IFS= read -r skill; do
         local name description
         name=$(extract_field "$SKILLS_SRC/$skill/SKILL.md" "name")
-        description=$(extract_field "$SKILLS_SRC/$skill/SKILL.md" "description")
+        description=$(resolve_wrapper_description "$SKILLS_SRC/$skill/SKILL.md")
         [ -z "$name" ] && name="$skill"
         [ -z "$description" ] && description=""
 
@@ -125,7 +139,7 @@ generate_codex() {
     while IFS= read -r skill; do
         local name description
         name=$(extract_field "$SKILLS_SRC/$skill/SKILL.md" "name")
-        description=$(extract_field "$SKILLS_SRC/$skill/SKILL.md" "description")
+        description=$(resolve_wrapper_description "$SKILLS_SRC/$skill/SKILL.md")
         [ -z "$name" ] && name="$skill"
         [ -z "$description" ] && description=""
 

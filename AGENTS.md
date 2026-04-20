@@ -5,8 +5,12 @@
 **セッション開始時に `.aide/rules.md` を必ず読み、その内容に従ってください。**
 
 - `.aide/rules.md`: aide共通ルール（原則・コーディング規約・コマンド一覧）
+- `.aide/skills/`: aideスキル定義の正本（Single Source of Truth）
 - `CLAUDE.md`: プロジェクト固有の設定（概要・フェーズ・技術スタック・制約）
-- `.claude/skills/`: aideスキル定義（Agent Skills形式）
+- 各AIツール用ラッパー（`.aide/skills/` を参照）:
+  - `.claude/skills/`: Claude Code 用（Agent Skills形式）
+  - `.agents/skills/`: Codex CLI 用
+  - `.github/skills/` / `.github/prompts/`: GitHub Copilot 用
 
 > **注意: このファイルの上記の内容は編集しないでください。**
 > `.aide/rules.md` の読み込み指示はaideフレームワークの動作に必要です。

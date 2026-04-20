@@ -1,6 +1,6 @@
 ---
 name: aide-pm-prototype
-description: ラフ要件からプロトタイプコードを生成し、仕様逆生成の起点を作る。小規模プロジェクトでの高速開発に使う
+description: ラフ要件から動くプロトタイプコードを素早く生成する（Quick モード向け）
 ---
 
 @../../.aide/skills/aide-pm-prototype/SKILL.md

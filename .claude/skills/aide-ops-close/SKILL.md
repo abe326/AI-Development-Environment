@@ -1,6 +1,6 @@
 ---
 name: aide-ops-close
-description: 指定タスクの対応記録を完成させステータスをCLOSEDに更新する。修正完了・確認後のクローズ時に使う
+description: タスクをクローズし、対応内容と再発防止策を記録する
 ---
 
 @../../.aide/skills/aide-ops-close/SKILL.md

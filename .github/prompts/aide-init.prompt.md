@@ -1,5 +1,5 @@
 ---
-description: "業務別にプロジェクトを初期化する。プロジェクト開始時に最初に1回実行する"
+description: "プロジェクトを dev / ops / dev+ops で初期化する。フォルダ構成・CLAUDE.md・必要ツールを一括セットアップ"
 agent: agent
 ---
 
